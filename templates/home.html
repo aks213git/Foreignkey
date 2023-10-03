@@ -1,0 +1,23 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load static %} 
+<style>
+    body{
+        background-image: url("{% static 'images/sq1.jpg' %}");
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    h1{
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        background-color: #c6ffc670;
+        width: 700px;
+        text-align: center;
+        margin-left: 31%;
+        margin-top: 30%;
+        border-radius: 30px;
+    }
+</style>
+<h1 style="color: rgb(0, 0, 0);font-size: 100px;text-align: center;margin-top: 10% ";>...Home Page...</h1>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'nav.html' %}
+{% block content %}
+<style>
+    body {
+        text-align: center;
+        background-color: black;
+    }
+    .container {
+        text-align: center;
+        max-width: 400px;
+        margin: 0 auto; 
+        margin-top: 7%;
+        padding: 20px; 
+        border-radius: 20px;
+        border: 10px solid rgba(0, 195, 0, 0.427);
+    }
+    h1{
+        color: rgb(0, 195, 0);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    input, select, button {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px; 
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+    button {
+        width: 25%; 
+        padding: 5px; 
+        border-radius: 10px;
+        background-color: black;
+        color: white;
+    }
+    button:hover {
+        background-color: rgb(0, 195, 0);
+        border-color: rgb(0, 195, 0);
+        color: white;
+    }
+</style>
+<div class="container">
+    <h1>Add Student</h1>
+    <form method="post" action="{% url 'add_student' %}">
+        {% csrf_token %}
+        <input type="text" placeholder="Enter name" name="name"><br>
+        <input type="text" placeholder="Enter Address" name="address"><br>
+        <input type="number" placeholder="Enter Age" name="age"><br>
+        <input type="date" name="join_date"><br>
+        <select id="course" name="course">
+            <option value="Select" selected>Select Course</option>
+            {% for course in courses %}
+                <option value="{{ course.id }}">{{ course.Course }}</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

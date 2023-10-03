@@ -1,0 +1,127 @@
+{% extends 'nav.html' %}
+{% block content %}
+
+  <style>
+        body {
+            background-color: black;
+            font-family: Verdana, sans-serif;
+
+        }
+
+        .container{
+            padding: 50px;
+        }
+
+
+
+        h1 {
+            text-align: center;
+            color: rgb(0, 195, 0);
+            font-weight: bold;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+        }
+
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            border: 5px solid rgb(0, 195, 0);
+            border-radius: 5%;
+        }
+
+        th, td {
+            border: 1px solid rgb(0, 195, 0,0.427);
+            padding: 8px;
+            text-align: center;
+        }
+
+        td {
+            background-color: black;
+            color: white;
+        }
+        th {
+            background-color: rgb(0, 195, 0);
+            color: black;
+        }
+
+
+
+        a.edit-link,
+        a.delete-link {
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+        
+        a.edit-link {
+            color: green;
+        }
+        
+        a.delete-link {
+            color: red;
+        }
+        
+        a.edit-link:hover {
+            color: white;
+            background-color: green;
+        }
+        
+        a.delete-link:hover {
+            color: white;
+            background-color: red;
+        }
+        
+
+        input[type="submit"] {
+            background-color: transparent;
+            color: red;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: red;
+            color: white;
+        }
+
+
+    </style>
+<div class="container">
+    <h1>Student Details</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Age</th>
+                <th>Join Date</th>
+                <th>Course</th>
+                <th>Course Fee</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.address }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.join_date }}</td>
+                <td>{{ student.course.Course }}</td>
+                <td>{{ student.course.Fee }}</td>
+                <td>
+                    <a href="{% url 'edit_student' student.id %}" class="edit-link">Edit</a> | 
+                    <a href="{% url 'delete' student.id %}" class="delete-link">Delete</a>
+                </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    {% endblock %}
